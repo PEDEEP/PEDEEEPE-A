@@ -38,27 +38,39 @@ export function Home() {
         <img src={phoom} alt="phoom " />
       </div>
 
-      <h2 style="color : #FFE338">ประชาสัมพันธ์องค์กร</h2>
-      <div class="wrapper">
-        <div>
-          <img src={content1} alt="content-img1" />
-        </div>
-        <div>
-          <img src={content2} alt="content-img2" />
-        </div>
-        <div>
-          <img src={content3} alt="content-img3" />
-        </div>
-        <div>
-          <img src={content4} alt="content-img4" />
-        </div>
-        <div>
-          <img src={content5} alt="content-img5" />
-        </div>
-        <div>
-          <img src={content6} alt="content-img6" />
-        </div>
+    <h2 style="color : #FFE338">ประชาสัมพันธ์องค์กร</h2>
+    <div class="wrapper">
+      <div>
+        <img src={content1} alt="content-img1" />
+        <h4>ปฏิบัติหน้าที่เดือน กรกฎาคม (ประชุมงาน)</h4>
+        <p>ประชุม หัวข้องาน และ ความต้องการของลูกค้า ที่ต้องการ product โง่่ๆ สร้างความไร้สาระกับลูกค้าให้มากที่สุด ในงาน Stupid hackation</p>
       </div>
+      <div>
+        <img src={content2} alt="content-img2" />
+        <h4>ปฏิบัติหน้าที่เดือน กรกฎาคม (อบรมศึกษา)</h4>
+        <p>การฝึกอบรมและศึกษา การใช้งาน Kotchasan framework ของภาษา PHP ที่ดีที่สุดในตลาด ณ เวลานี้</p>
+      </div>
+      <div>
+        <img src={content3} alt="content-img3" />
+        <h4>ปฏิบัติหน้าที่เดือน กรกฎาคม (แก้บัค)</h4>
+        <p>การแก้ไขซอฟแวร์เฉพาะหน้าหรือเรียกว่า บัค มันไม่เป็นความจริงเลย เพราะบัคเท่ากับฟีเจอร์ ของ แอปที่ดีๆ</p>
+      </div>
+      <div>
+        <img src={content4} alt="content-img4" />
+        <h4>ปฏิบัติหน้าที่เดือน กรกฎาคม (daliy syne up)</h4>
+        <p>การประชุมเล็กๆที่จัดขึ้นทุกวัน ที่มีแต่ การพูดถึง สิ่งเดิมๆ ไม่ไปข้างหน้าๆ หัวหน้าก็คนเดิม เพื่อนร่วมงานก็คนเดิม</p>
+      </div>
+      <div>
+        <img src={content5} alt="content-img5" />
+        <h4>ปฏิบัติหน้าที่เดือน กรกฎาคม (ประชุมกับ dev)</h4>
+        <p>การประชุมร่วมของ dev ที่มี่ ปัญหา ระหว่าง  front end กับ backend ใครต่อAPI กันแน่ ส่วน UI/UX designer ออกแบบจนdevทำ ไม่ทัน ส่วน devops ก็ server ล่ม </p>
+      </div>
+      <div>
+        <img src={content6} alt="content-img6" />
+        <h4>ปฏิบัติหน้าที่เดือน กรกฎาคม (ส่งมอบผลงาน)</h4>
+        <p>CEO ได้สรุปผลงานของ Dev เดอน กรกฎาคม งานตองดเลย 2เดอน เพราะ บรษทมงเนน จกรวาลนฤมตร มากเกนไปจนลม product กอนนานน และ พนกงานได lay-out จนบรษทลมละลา</p>
+      </div>
+
     </div>
   );
 }

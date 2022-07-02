@@ -50,6 +50,8 @@ marquee{
   display : flex ; 
 }
 .wrapper{ 
+  color: black ;
+  font-size: 14px;
   margin: 20px; 
   background: yellow ; 
   display: grid;
