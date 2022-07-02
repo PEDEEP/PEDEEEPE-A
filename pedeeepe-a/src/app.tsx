@@ -1,7 +1,7 @@
 import RegisterDialog from "./components/dialog/RegisterDialog";
 import { h } from "preact";
 import { useEffect } from "preact/hooks";
-import Home from './home'
+import Home from "./home";
 export function App() {
   const handleRegister = () => {
     const modal = document.getElementById("register-dialog");
@@ -12,12 +12,12 @@ export function App() {
     }
   };
   useEffect(() => {
-    // handleRegister();
+    handleRegister();
   }, []);
 
   return (
     <>
-    <Home />
+      <Home />
       <RegisterDialog id="register-dialog"></RegisterDialog>
     </>
   );

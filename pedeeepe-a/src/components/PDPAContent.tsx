@@ -74,8 +74,9 @@ const PDPAContent = () => {
       style={{
         overflowY: "scroll",
         backgroundColor: "white",
-        height: "50vh",
+        height: "70vh",
         padding: "100px",
+        borderRadius: "15px",
       }}
       onScroll={checkScrollSpeed}
     >
