@@ -6,6 +6,10 @@ h1{
     color:#FFE338;
 }
 
+้h2{
+  color: #FFE338;
+}
+
 marquee{
     margin-top: 20px; 
       font-size: 17px;
@@ -48,7 +52,15 @@ marquee{
   display : flex ; 
 }
 .wrapper{ 
+  margin: 20px; 
   background: yellow ; 
   display: grid;
   grid-template-columns:  repeat( auto-fit, minmax(400px, 1fr) ); 
+}
+
+.wrapper img { 
+  margin: 20px;
+  width:  60%; 
+  height: 200px;
+  object-fit: cover; 
 }
