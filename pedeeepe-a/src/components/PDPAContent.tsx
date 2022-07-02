@@ -1,8 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
-import {
-  PDPACheckInterface,
-  PDPAContentInterface,
-} from "../types/pdpa_content";
+import { PDPAContentInterface } from "../types/pdpa_content";
 
 import sanitizeHtml from "sanitize-html";
 import Swal from "sweetalert2";
@@ -35,7 +32,7 @@ const PDPAContent = () => {
       lastPos = newPos;
       clearTimeout(timer);
       timer = setTimeout(clear, delay);
-      if (delta != null && delta > 20 && !isAlert) {
+      if (delta != null && delta >  45 && !isAlert) {
         setIsAlert(true);
         Swal.fire({
           title: "คุณได้อ่านบ้างรึป่าว scroll เร็วไปนะ ไปอ่านใหม่",
@@ -52,7 +49,6 @@ const PDPAContent = () => {
     };
   })();
 
-  const [areChecked, setAreChecked] = useState<Array<PDPACheckInterface>>([]);
   const fectchContent = async () => {
     const fetched = await fetch(
       "https://pedeep.mixkoap.com/file/pdpa.json"
@@ -63,19 +59,6 @@ const PDPAContent = () => {
       return (await response.json()) as Array<PDPAContentInterface>;
     });
     setPdpa(fetched);
-    let arr: Array<PDPACheckInterface> = [];
-    fetched.forEach((element) => {
-      arr.push({ id: element.id, is_checked: false });
-    });
-    setAreChecked(arr);
-  };
-
-  const handleChecking = (id: number) => {
-    setAreChecked(
-      areChecked.map((item) =>
-        item.id === id ? { ...item, is_checked: !item.is_checked } : item
-      )
-    );
   };
 
   useEffect(() => {
@@ -91,39 +74,18 @@ const PDPAContent = () => {
       style={{
         overflowY: "scroll",
         backgroundColor: "white",
-        height: "70vh",
+        height: "50vh",
         padding: "100px",
-        borderRadius: "15px",
       }}
       onScroll={checkScrollSpeed}
     >
       {pdpa.map((el) => {
         return (
           <div
-            style={{
-              color: "black",
-              display: "flex",
-              alignItems: "center",
-              border: "1px black solid",
-            }}
-          >
-            <input
-              type="checkbox"
-              style={{ margin: "20px" }}
-              onChange={() => handleChecking(el.id)}
-            />
-            <div
-              style={{
-                color: "black",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-                textAlign: "left",
-              }}
-              key={`index-${el.id}`}
-              dangerouslySetInnerHTML={{ __html: sanitized(el.content) }}
-            />
-          </div>
+            style={{ color: "black" }}
+            key={`index-${el.id}`}
+            dangerouslySetInnerHTML={{ __html: sanitized(el.content) }}
+          />
         );
       })}
     </div>
