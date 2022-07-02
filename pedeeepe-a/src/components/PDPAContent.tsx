@@ -55,6 +55,7 @@ const PDPAContent = () => {
 
   const fectchContent = async () => {
     const fetched = await fetch(
+      // ขี้เกียจทำ env
       "https://pedeep.mixkoap.com/file/pdpa.json"
     ).then(async (response) => {
       if (!response.ok) {
@@ -78,6 +79,9 @@ const PDPAContent = () => {
     );
   };
 
+  const handleSubmit = (): boolean =>
+    areChecked.find((e) => !e.is_checked) ? false : true;
+
   useEffect(() => {
     fectchContent();
   }, []);
@@ -94,7 +98,7 @@ const PDPAContent = () => {
         height: "50vh",
         padding: "100px",
       }}
-      onScroll={checkScrollSpeed}
+      // onScroll={checkScrollSpeed}
     >
       {pdpa.map((el) => {
         return (
@@ -125,6 +129,7 @@ const PDPAContent = () => {
           </div>
         );
       })}
+      <button onClick={() => console.log(handleSubmit())}>Submit</button>
     </div>
   );
 };
