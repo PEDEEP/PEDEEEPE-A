@@ -39,7 +39,7 @@ export function Home() {
         <img src={phoom} alt="phoom " />
       </div>
 
-    <h2>ประชาสัมพันธ์องค์กร</h2>
+    <h2 style="color : #FFE338">ประชาสัมพันธ์องค์กร</h2>
     <div class="wrapper">
       <div>
         <img src={content1} alt="content-img1" />
