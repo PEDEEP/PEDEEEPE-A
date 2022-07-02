@@ -78,8 +78,19 @@ const PDPAContent = () => {
       )
     );
 
-  const handleSubmit = (): boolean =>
-    areChecked.find((e) => !e.is_checked) ? false : true;
+  const handlePopQuestion = () => {
+    const question = document.getElementById("quiz");
+    if (question) {
+      question.style.display = "flex";
+    }
+  };
+
+  const handleSubmit = (): boolean => {
+    handlePopQuestion();
+    const main = document.getElementsByTagName("body")[0];
+    if (main) main.style.overflow = "auto";
+    return areChecked.find((e) => !e.is_checked) ? false : true;
+  };
 
   useEffect(() => {
     fectchContent();
@@ -94,7 +105,7 @@ const PDPAContent = () => {
       style={{
         overflowY: "scroll",
         backgroundColor: "white",
-        height: "50vh",
+        height: "70vh",
         padding: "100px",
       }}
       // onScroll={checkScrollSpeed}
