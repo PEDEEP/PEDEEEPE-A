@@ -1,6 +1,7 @@
 import "./styles/home.css";
 import logo from "./image/logo.png";
 import tiger from "./image/tiger.gif";
+import phoom from "./image/Poom.gif"
 import Swal from "sweetalert2";
 
 const emptyArray = [1, 1, 1, 1, 1, 1];
@@ -28,8 +29,19 @@ export function Home() {
 
       <div className="image-container">
         <img src={tiger} alt="tiger" />
-        <img src={tiger} alt="tiger" />
+        <img src={phoom} alt="phoom " />
       </div>
+
+    <div class="wrapper">
+      <div>
+        <img src="" alt="" />
+      </div>
+      <div>Two</div>
+      <div>Three</div>
+      <div>Four</div>
+      <div>Five</div>
+      <div>Six</div>
+    </div>
     </>
   );
 }

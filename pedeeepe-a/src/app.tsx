@@ -12,7 +12,7 @@ export function App() {
     }
   };
   useEffect(() => {
-    handleRegister();
+    // handleRegister();
   }, []);
 
   return (
