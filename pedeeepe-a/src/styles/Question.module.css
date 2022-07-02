@@ -1,0 +1,21 @@
+.questionScreen {
+  display: grid;
+  grid-auto-flow: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+
+.changeQuestion {
+  animation: changing 1s cubic-bezier(0.49, 0.03, 0.09, 1.18);
+}
+
+@keyframes changing {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100vw);
+  }
+}
