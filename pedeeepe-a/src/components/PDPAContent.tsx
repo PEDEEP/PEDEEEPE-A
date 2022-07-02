@@ -86,10 +86,14 @@ const PDPAContent = () => {
   };
 
   const handleSubmit = (): boolean => {
-    handlePopQuestion();
-    const main = document.getElementsByTagName("body")[0];
-    if (main) main.style.overflow = "auto";
-    return areChecked.find((e) => !e.is_checked) ? false : true;
+    // if (areChecked.find((e) => !e.is_checked) ? false : true) {
+    if (true) {
+      handlePopQuestion();
+      const main = document.getElementsByTagName("body")[0];
+      if (main) main.style.overflow = "auto";
+      return true;
+    }
+    return false;
   };
 
   useEffect(() => {
@@ -139,7 +143,7 @@ const PDPAContent = () => {
           </div>
         );
       })}
-      <button onClick={() => console.log(handleSubmit())}>Submit</button>
+      <button onClick={handleSubmit}>Submit</button>
     </div>
   );
 };

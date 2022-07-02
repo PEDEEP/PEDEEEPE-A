@@ -1,45 +1,98 @@
-import { useMemo, useState } from "preact/hooks";
+import { useEffect, useMemo, useState } from "preact/hooks";
 
 import styles from "../../styles/Question.module.css";
+import { QuestionInterface } from "../../types/question";
+
+const MOCK_QUESTION = {
+  id: 0,
+  question: "",
+  choices: [
+    {
+      choice: "",
+      id: 1,
+      is_correct: false,
+      question_id: 0,
+    },
+    {
+      choice: "",
+      id: 1,
+      is_correct: false,
+      question_id: 0,
+    },
+    {
+      choice: "",
+      id: 1,
+      is_correct: false,
+      question_id: 0,
+    },
+    {
+      choice: "",
+      id: 1,
+      is_correct: false,
+      question_id: 0,
+    },
+  ],
+};
+
 const Question = ({ ...props }) => {
-  const questions = [
-    { q: "Are you gay?" },
-    { q: "Hello?" },
-    { q: "Float" },
-    { q: "1" },
-  ];
   const [qNumber, setQNumber] = useState(0);
-  const renderLeft = useMemo(
-    () => (
-      <div
-        id="question"
-        style={{
-          width: "100vw",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          color: "black",
-        }}
-      >
-        <div>{questions[qNumber].q}</div>
-        <div
-          style={{
-            display: "grid",
-            marginTop: "100px",
-            gridGap: "100px",
-            gridTemplateColumns: "repeat(2, auto)",
-          }}
-        >
-          <div style={{ color: "black" }}>Helelo</div>
-          <div style={{ color: "black" }}>asdhgaydgasjdhgascdavvas</div>
-          <div style={{ color: "black" }}>adsdhg</div>
-          <div style={{ color: "black" }}>dsiuotp</div>
+  const [questions, setQuestions] = useState<Array<QuestionInterface>>([
+    MOCK_QUESTION,
+    MOCK_QUESTION,
+  ]);
+
+  const fectchQuestions = async () => {
+    const fetched = await fetch(
+      // ขี้เกียจทำ env
+      "https://pedeep.mixkoap.com/file/questions.json"
+    ).then(async (response) => {
+      if (!response.ok) {
+        throw "Error อ่ะมึง";
+      }
+      return (await response.json()) as Array<QuestionInterface>;
+    });
+    console.log(fetched);
+    setQuestions(fetched);
+  };
+
+  const checkAnswer = (q_id: number, choice_id: number): boolean =>
+    questions
+      .find((val) => val.id === q_id)
+      ?.choices.find((valB) => valB.id === choice_id)?.is_correct!;
+
+  useEffect(() => {
+    fectchQuestions();
+  }, []);
+
+  const renderLeft = useMemo(() => {
+    <div
+      id="question"
+      style={{
+        width: "100vw",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        color: "black",
+      }}
+    >
+      <div>{questions[qNumber].question}</div>
+      <div>
+        <div className={styles.questionBox}>
+          1. {questions[qNumber].choices[0].choice}
+        </div>
+        <div className={styles.questionBox}>
+          2. {questions[qNumber].choices[1].choice}
+        </div>
+        <div className={styles.questionBox}>
+          3. {questions[qNumber].choices[2].choice}
+        </div>
+        <div class={styles.questionBox}>
+          4. {questions[qNumber].choices[3].choice}
         </div>
       </div>
-    ),
-    [qNumber]
-  );
+    </div>;
+  }, [qNumber, questions]);
   const renderRight = useMemo(() => {
     if (qNumber == questions.length - 1) {
       return <div>You good at the Game, don't you</div>;
@@ -56,7 +109,7 @@ const Question = ({ ...props }) => {
           color: "black",
         }}
       >
-        <div>{questions[qNumber + 1].q}</div>
+        <div>{questions[qNumber + 1].question}</div>
         <div
           style={{
             display: "grid",
@@ -65,14 +118,20 @@ const Question = ({ ...props }) => {
             gridTemplateColumns: "repeat(2, auto)",
           }}
         >
-          <div style={{ color: "black" }}>Helelo</div>
-          <div style={{ color: "black" }}>asdhgaydgasjdhgascdavvas</div>
-          <div style={{ color: "black" }}>adsdhg</div>
-          <div style={{ color: "black" }}>dsiuotp</div>
+          {questions[qNumber].choices.map((item, index) => {
+            return (
+              <div
+                className={styles.questionBox}
+                onClick={() => checkAnswer(questions[qNumber].id, item.id)}
+              >
+                {index + 1}. {item.choice}
+              </div>
+            );
+          })}
         </div>
       </div>
     );
-  }, [qNumber]);
+  }, [qNumber, questions]);
 
   const handlePageChange = () => {
     document.querySelectorAll("#question").forEach((e) => {

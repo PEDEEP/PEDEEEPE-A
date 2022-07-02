@@ -7,6 +7,13 @@
   position: relative;
 }
 
+.questionBox {
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+}
+
 .changeQuestion {
   animation: changing 1s cubic-bezier(0.49, 0.03, 0.09, 1.18);
 }
