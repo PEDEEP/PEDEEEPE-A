@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "preact/hooks";
+import Swal from "sweetalert2";
 
 import styles from "../../styles/Question.module.css";
 import { QuestionInterface } from "../../types/question";
@@ -55,44 +56,68 @@ const Question = ({ ...props }) => {
     setQuestions(fetched);
   };
 
-  const checkAnswer = (q_id: number, choice_id: number): boolean =>
-    questions
-      .find((val) => val.id === q_id)
-      ?.choices.find((valB) => valB.id === choice_id)?.is_correct!;
+  const checkAnswer = (q_id: number, choice_id: number) => {
+    if (
+      !questions
+        .find((val) => val.id === q_id)
+        ?.choices.find((valB) => valB.id === choice_id)?.is_correct!
+    ) {
+      const question = document.getElementById("quiz");
+      if (question) {
+        question.style.display = "none";
+      }
+      Swal.fire("ว้่ายผิดไปอ่านใหม่");
+      setQNumber(0);
+      const scroll = document.getElementById("pdpa-scroll");
+      if (scroll) scroll.scrollTo(0, 0);
+      return;
+    }
+    handlePageChange();
+    return;
+  };
 
   useEffect(() => {
     fectchQuestions();
   }, []);
 
-  const renderLeft = useMemo(() => {
-    <div
-      id="question"
-      style={{
-        width: "100vw",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        color: "black",
-      }}
-    >
-      <div>{questions[qNumber].question}</div>
-      <div>
-        <div className={styles.questionBox}>
-          1. {questions[qNumber].choices[0].choice}
-        </div>
-        <div className={styles.questionBox}>
-          2. {questions[qNumber].choices[1].choice}
-        </div>
-        <div className={styles.questionBox}>
-          3. {questions[qNumber].choices[2].choice}
-        </div>
-        <div class={styles.questionBox}>
-          4. {questions[qNumber].choices[3].choice}
+  const renderLeft = useMemo(
+    () => (
+      <div
+        id="question"
+        style={{
+          width: "100vw",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "black",
+        }}
+      >
+        <div>{questions[qNumber].question}</div>
+        <div
+          style={{
+            display: "grid",
+            marginTop: "100px",
+            gridGap: "100px",
+            gridTemplateColumns: "repeat(2, auto)",
+          }}
+        >
+          {questions[qNumber].choices.map((item, index) => {
+            return (
+              <div
+                className={styles.questionBox}
+                onClick={() => checkAnswer(questions[qNumber].id, item.id)}
+              >
+                {index + 1}. {item.choice}
+              </div>
+            );
+          })}
         </div>
       </div>
-    </div>;
-  }, [qNumber, questions]);
+    ),
+    [qNumber, questions]
+  );
+
   const renderRight = useMemo(() => {
     if (qNumber == questions.length - 1) {
       return <div>You good at the Game, don't you</div>;
@@ -118,11 +143,11 @@ const Question = ({ ...props }) => {
             gridTemplateColumns: "repeat(2, auto)",
           }}
         >
-          {questions[qNumber].choices.map((item, index) => {
+          {questions[qNumber + 1].choices.map((item, index) => {
             return (
               <div
                 className={styles.questionBox}
-                onClick={() => checkAnswer(questions[qNumber].id, item.id)}
+                onClick={() => checkAnswer(questions[qNumber + 1].id, item.id)}
               >
                 {index + 1}. {item.choice}
               </div>
@@ -137,7 +162,9 @@ const Question = ({ ...props }) => {
     document.querySelectorAll("#question").forEach((e) => {
       e.classList.add(styles.changeQuestion);
     });
-    if (qNumber == questions.length) {
+    console.log(qNumber, questions.length);
+
+    if (qNumber == questions.length - 1) {
       handleEndQuiz();
       return;
     }
@@ -149,21 +176,19 @@ const Question = ({ ...props }) => {
     }, 1000);
   };
 
-  const handleEndQuiz = () => {};
+  const handleEndQuiz = () => {
+    Swal.fire("ยินดีด้วย");
+    const quiz = document.getElementById("quiz");
+    if (quiz) quiz.style.display = "none";
+
+    const pdpa = document.getElementById("pdpa-scroll");
+    if (pdpa) pdpa.style.display = "none";
+
+    const dialog = document.getElementById("pdpa-dialog");
+    if (dialog) dialog.style.display = "none";
+  };
   return (
     <div className={styles.questionScreen} {...props}>
-      <button
-        onClick={() => handlePageChange()}
-        style={{
-          position: "absolute",
-          right: "10px",
-          top: "50%",
-          transform: "translateY(-25%)",
-        }}
-        className="absolute right-4 top-1/2 -translate-y-1/4"
-      >
-        {">"}
-      </button>
       {renderLeft}
       {renderRight}
     </div>

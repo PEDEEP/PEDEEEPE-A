@@ -1,4 +1,6 @@
 import PdpaDialog from "./PdpaDialog";
+import { useState } from "preact/hooks";
+import Swal from "sweetalert2";
 
 const handlePdpa = () => {
   const modal = document.getElementById("pdpa-dialog");
@@ -6,7 +8,18 @@ const handlePdpa = () => {
     modal.style.display = "block";
   }
 };
+
+const handleRegister = () => {
+  const main = document.getElementsByTagName("body")[0];
+  if (main) main.style.overflow = "auto";
+  Swal.fire("Noice you registered");
+  const modal = document.getElementById("register-dialog");
+  if (modal) {
+    modal.style.display = "none";
+  }
+};
 const RegisterDialog = ({ ...props }) => {
+  const [isAcceptTerm, setIsAcceptTerm] = useState(false);
   return (
     <div
       {...props}
@@ -41,7 +54,7 @@ const RegisterDialog = ({ ...props }) => {
         >
           โปรด Register
         </div>
-        <form
+        <div
           style={{
             display: "flex",
             flexDirection: "column",
@@ -52,6 +65,7 @@ const RegisterDialog = ({ ...props }) => {
             style={{ marginBottom: "10px" }}
             type="text"
             placeholder="username"
+            onChange={() => setIsAcceptTerm(true)}
           />
           <input type="text" placeholder="password" />
           <div
@@ -73,9 +87,11 @@ const RegisterDialog = ({ ...props }) => {
                 โปรดสมยอมใน term ของเรา
               </label>
             </div>
-            <button>Register</button>
+            <button disabled={!isAcceptTerm} onClick={() => handleRegister()}>
+              Register
+            </button>
           </div>
-        </form>
+        </div>
         <PdpaDialog id="pdpa-dialog" />
       </div>
     </div>

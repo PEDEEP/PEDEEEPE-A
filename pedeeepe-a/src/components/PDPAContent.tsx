@@ -12,14 +12,11 @@ const PDPAContent = () => {
   const [areChecked, setAreChecked] = useState<Array<PDPACheckInterface>>([]);
   const [isAlert, setIsAlert] = useState(false);
   const checkScrollSpeed = (function () {
-    // settings = settings || {};
-
     var lastPos: number | null = 50;
     var newPos: number = 50;
     var timer: number = 50;
     var delta: number = 50;
-    var delay = 50; // in "ms" (higher means lower fidelity )
-    console.log(lastPos!, newPos, timer, delta, delay);
+    var delay = 50;
 
     function clear() {
       lastPos = null;
@@ -79,21 +76,12 @@ const PDPAContent = () => {
     );
 
   const handlePopQuestion = () => {
-    const question = document.getElementById("quiz");
-    if (question) {
-      question.style.display = "flex";
+    if (areChecked.find((e) => !e.is_checked) ? false : true) {
+      const question = document.getElementById("quiz");
+      if (question) {
+        question.style.display = "flex";
+      }
     }
-  };
-
-  const handleSubmit = (): boolean => {
-    // if (areChecked.find((e) => !e.is_checked) ? false : true) {
-    if (true) {
-      handlePopQuestion();
-      const main = document.getElementsByTagName("body")[0];
-      if (main) main.style.overflow = "auto";
-      return true;
-    }
-    return false;
   };
 
   useEffect(() => {
@@ -112,7 +100,7 @@ const PDPAContent = () => {
         height: "70vh",
         padding: "100px",
       }}
-      // onScroll={checkScrollSpeed}
+      onScroll={checkScrollSpeed}
     >
       {pdpa.map((el) => {
         return (
@@ -143,7 +131,7 @@ const PDPAContent = () => {
           </div>
         );
       })}
-      <button onClick={handleSubmit}>Submit</button>
+      <button onClick={handlePopQuestion}>Submit</button>
     </div>
   );
 };
