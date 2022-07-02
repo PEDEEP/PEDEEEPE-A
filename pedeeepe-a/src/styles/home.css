@@ -47,3 +47,8 @@ marquee{
   margin: 40px 50px 40px 50px; 
   display : flex ; 
 }
+.wrapper{ 
+  background: yellow ; 
+  display: grid;
+  grid-template-columns:  repeat( auto-fit, minmax(400px, 1fr) ); 
+}
