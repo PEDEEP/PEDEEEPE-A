@@ -3,7 +3,7 @@
 h1{ 
   position:relative;
   margin-top: 50px;
-    color:#FFE338;
+    color:#F4BC1C;
 }
 
 
@@ -12,7 +12,7 @@ marquee{
     margin-top: 20px; 
       font-size: 17px;
       font-weight: 400;
-      color: #FFD000;
+      color: #F4BC1C;
       }
 
 .topnav {
@@ -53,7 +53,7 @@ marquee{
   color: black ;
   font-size: 14px;
   margin: 20px; 
-  background: yellow ; 
+  background: #F4BC1C;
   display: grid;
   grid-template-columns:  repeat( auto-fit, minmax(400px, 1fr) ); 
 }
