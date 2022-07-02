@@ -32,7 +32,7 @@ const PDPAContent = () => {
       lastPos = newPos;
       clearTimeout(timer);
       timer = setTimeout(clear, delay);
-      if (delta != null && delta > 20 && !isAlert) {
+      if (delta != null && delta >  45 && !isAlert) {
         setIsAlert(true);
         Swal.fire({
           title: "คุณได้อ่านบ้างรึป่าว scroll เร็วไปนะ ไปอ่านใหม่",
@@ -74,9 +74,8 @@ const PDPAContent = () => {
       style={{
         overflowY: "scroll",
         backgroundColor: "white",
-        height: "70vh",
+        height: "50vh",
         padding: "100px",
-        borderRadius: "15px",
       }}
       onScroll={checkScrollSpeed}
     >
