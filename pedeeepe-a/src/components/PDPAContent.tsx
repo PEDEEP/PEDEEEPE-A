@@ -71,13 +71,12 @@ const PDPAContent = () => {
     setAreChecked(arr);
   };
 
-  const handleChecking = (id: number) => {
+  const handleChecking = (id: number) =>
     setAreChecked(
       areChecked.map((item) =>
         item.id === id ? { ...item, is_checked: !item.is_checked } : item
       )
     );
-  };
 
   const handleSubmit = (): boolean =>
     areChecked.find((e) => !e.is_checked) ? false : true;
