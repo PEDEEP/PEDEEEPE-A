@@ -32,7 +32,12 @@ const RegisterDialog = ({ ...props }) => {
         }}
       >
         <div
-          style={{ textAlign: "start", color: "black", marginBottom: "50px" }}
+          style={{
+            textAlign: "start",
+            color: "black",
+            marginBottom: "50px",
+            fontSize: "30px",
+          }}
         >
           โปรด Register
         </div>
@@ -64,7 +69,7 @@ const RegisterDialog = ({ ...props }) => {
                 onChange={handlePdpa}
                 id=""
               />
-              <label style={{ color: "black", fontSize: "14px" }}>
+              <label style={{ color: "black", fontSize: "24px" }}>
                 โปรดสมยอมใน term ของเรา
               </label>
             </div>
