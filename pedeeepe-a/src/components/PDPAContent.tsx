@@ -24,10 +24,18 @@ const PDPAContent = () => {
     sanitizeHtml(html, { allowedTags: ["b", "a", "b", "br"] });
 
   return (
-    <div>
+    <div
+      style={{
+        overflowY: "scroll",
+        backgroundColor: "white",
+        height: "50vh",
+        padding: "100px",
+      }}
+    >
       {pdpa.map((el) => {
         return (
           <div
+            style={{ color: "black" }}
             key={`index-${el.id}`}
             dangerouslySetInnerHTML={{ __html: sanitized(el.content) }}
           />
