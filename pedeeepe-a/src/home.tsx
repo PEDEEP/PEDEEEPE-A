@@ -1,6 +1,6 @@
 import "./styles/home.css";
 import logo from "./image/logo.png";
-import tiger from "./image/tiger.gif";
+import tiger from "./image/Tiger.gif";
 import phoom from "./image/Poom.gif";
 import Swal from "sweetalert2";
 import content1 from "./image/content-image/img-content1.jpg";
