@@ -19,6 +19,7 @@ const PDPAContent = () => {
     var timer: number = 50;
     var delta: number = 50;
     var delay = 50; // in "ms" (higher means lower fidelity )
+    console.log(lastPos!, newPos, timer, delta, delay);
 
     function clear() {
       lastPos = null;
@@ -77,13 +78,8 @@ const PDPAContent = () => {
       )
     );
 
-  const handleSubmit = (): boolean => {
-    const main = document.getElementsByTagName("body")[0];
-    if (main) {
-      main.style.overflow = "auto";
-    }
-    return areChecked.find((e) => !e.is_checked) ? false : true;
-  };
+  const handleSubmit = (): boolean =>
+    areChecked.find((e) => !e.is_checked) ? false : true;
 
   useEffect(() => {
     fectchContent();
@@ -98,11 +94,10 @@ const PDPAContent = () => {
       style={{
         overflowY: "scroll",
         backgroundColor: "white",
-        height: "70vh",
+        height: "50vh",
         padding: "100px",
-        borderRadius: "5px",
       }}
-      onScroll={checkScrollSpeed}
+      // onScroll={checkScrollSpeed}
     >
       {pdpa.map((el) => {
         return (

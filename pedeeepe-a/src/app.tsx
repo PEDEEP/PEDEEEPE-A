@@ -15,10 +15,6 @@ export function App() {
     }
   };
   useEffect(() => {
-    const main = document.getElementsByTagName("body")[0];
-    if (main) {
-      main.style.overflow = "hidden";
-    }
     handleRegister();
   }, []);
 
