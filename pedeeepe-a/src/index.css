@@ -1,6 +1,6 @@
 @font-face {
-  font-family: jindalikghit;
-  src: url("/src/assets/was@jindalikhitFont.ttf");
+  font-family: norah;
+  src: url("/src/assets/SOV_norah/SOV_norah.ttf");
 }
 
 html,
@@ -10,7 +10,7 @@ body {
   padding: 0;
   margin: 0;
   background: blue;
-  font-family: jindalikghit;
+  font-family: norah;
   font-weight: 400;
   color: #444;
   -webkit-font-smoothing: antialiased;
