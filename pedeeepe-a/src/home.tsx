@@ -1,5 +1,6 @@
 import './styles/home.css'
 import logo from'./image/logo.png'
+import tiger from './image/tiger.gif'
 
 export function Home() {
   return (
@@ -19,6 +20,11 @@ export function Home() {
       <a href="#home">Home</a>
       <a href="#home">Home</a>
 </div> 
+
+    <div className="image-container"> 
+      <img src={tiger} alt="tiger"/>
+      <img src={tiger} alt="tiger"/>
+    </div>
     </>
   );
 }

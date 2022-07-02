@@ -1,23 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-html,
-body {
-  height: 100%;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  background: #fafafa;
-  font-family: "Helvetica Neue", arial, sans-serif;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-}
 
 h1{ 
   position:relative;
@@ -40,7 +21,6 @@ marquee{
 
 /* Style the links inside the navigation bar */
 .topnav a {
-  float: left;
   color: #f2f2f2;
   text-align: center;
   padding: 14px 50px;
@@ -57,7 +37,13 @@ marquee{
 .logo-img{ 
   width: 168px;
   height: 145px;
-  left: 91px;
-  top: 50px;
+}
 
+.image-container img{  
+  margin : 70px  ; 
+  width:  40%; 
+}
+.image-container{
+  margin: 40px 50px 40px 50px; 
+  display : flex ; 
 }
