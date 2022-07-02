@@ -64,7 +64,9 @@ const RegisterDialog = ({ ...props }) => {
                 onChange={handlePdpa}
                 id=""
               />
-              <label style={{ color: "black" }}>จดจำฉันไว้</label>
+              <label style={{ color: "black", fontSize: "14px" }}>
+                โปรดสมยอมใน term ของเรา
+              </label>
             </div>
             <button>Register</button>
           </div>
