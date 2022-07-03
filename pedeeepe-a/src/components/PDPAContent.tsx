@@ -81,7 +81,15 @@ const PDPAContent = () => {
       if (question) {
         question.style.display = "flex";
       }
+      return;
     }
+    const scroll = document.getElementById("pdpa-scroll");
+    if (scroll) scroll.scrollTo(0, 0);
+    Swal.fire(
+      "ดูเหมือนคุณจะไม่ได้ติ๊ก policy ไม่ครบทุกข้อนะครับ ไปอ่านใหม่ดูนะครับ"
+    );
+
+    return;
   };
 
   useEffect(() => {
