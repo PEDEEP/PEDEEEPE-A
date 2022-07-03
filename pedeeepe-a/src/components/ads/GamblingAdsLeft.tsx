@@ -27,7 +27,7 @@ const GamblingAdsLeft = () => {
       style={{ position: "fixed", bottom: 0, left: 0 }}
     >
       <img
-        style={{ position: "relative" }}
+        style={{ position: "relative", filter: "blur(5px)" }}
         src="https://www.img09.xyz/assets/img/banner-new/B1-H0PIlk-200x400-2.gif"
         alt=""
       />

@@ -27,7 +27,7 @@ const GamblingAdsRight = () => {
       style={{ position: "fixed", bottom: 0, right: 0 }}
     >
       <img
-        style={{ position: "relative" }}
+        style={{ position: "relative", filter: "blur(5px)" }}
         src="https://www.img03.xyz/assets/img/banner-new/R-float-Ufasexygame-banner-120x380.gif"
         alt=""
       />
