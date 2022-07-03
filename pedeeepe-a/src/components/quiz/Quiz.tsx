@@ -90,6 +90,7 @@ const Question = ({ ...props }) => {
           justifyContent: "center",
           alignItems: "center",
           color: "black",
+          fontFamily: "Kanit",
         }}
       >
         <div>{questions[qNumber].question}</div>
@@ -131,6 +132,7 @@ const Question = ({ ...props }) => {
           justifyContent: "center",
           alignItems: "center",
           color: "black",
+          fontFamily: "Kanit",
         }}
       >
         <div>{questions[qNumber + 1].question}</div>
