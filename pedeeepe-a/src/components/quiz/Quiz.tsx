@@ -52,7 +52,6 @@ const Question = ({ ...props }) => {
       }
       return (await response.json()) as Array<QuestionInterface>;
     });
-    console.log(fetched);
     setQuestions(fetched);
   };
 
@@ -162,7 +161,6 @@ const Question = ({ ...props }) => {
     document.querySelectorAll("#question").forEach((e) => {
       e.classList.add(styles.changeQuestion);
     });
-    console.log(qNumber, questions.length);
 
     if (qNumber == questions.length - 1) {
       handleEndQuiz();

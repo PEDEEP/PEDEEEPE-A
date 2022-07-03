@@ -2,24 +2,33 @@ import PdpaDialog from "./PdpaDialog";
 import { useState } from "preact/hooks";
 import Swal from "sweetalert2";
 
-const handlePdpa = () => {
-  const modal = document.getElementById("pdpa-dialog");
-  if (modal) {
-    modal.style.display = "block";
-  }
-};
-
-const handleRegister = () => {
-  const main = document.getElementsByTagName("body")[0];
-  if (main) main.style.overflow = "auto";
-  Swal.fire("Noice you registered");
-  const modal = document.getElementById("register-dialog");
-  if (modal) {
-    modal.style.display = "none";
-  }
-};
 const RegisterDialog = ({ ...props }) => {
   const [isAcceptTerm, setIsAcceptTerm] = useState(false);
+
+  const handlePdpa = () => {
+    setIsAcceptTerm(true);
+    const modal = document.getElementById("pdpa-dialog");
+    if (modal) {
+      modal.style.display = "block";
+    }
+  };
+
+  const handleRegister = () => {
+    if (isAcceptTerm) {
+      const main = document.getElementsByTagName("body")[0];
+      if (main) main.style.overflow = "auto";
+      Swal.fire("Noice you registered");
+      const modal = document.getElementById("register-dialog");
+      if (modal) {
+        modal.style.display = "none";
+      }
+      return;
+    }
+    handlePdpa();
+    setIsAcceptTerm(true);
+    return;
+  };
+
   return (
     <div
       {...props}
@@ -65,7 +74,6 @@ const RegisterDialog = ({ ...props }) => {
             style={{ marginBottom: "10px" }}
             type="text"
             placeholder="username"
-            onChange={() => setIsAcceptTerm(true)}
           />
           <input type="text" placeholder="password" />
           <div
@@ -80,8 +88,8 @@ const RegisterDialog = ({ ...props }) => {
                 style={{ color: "black" }}
                 type="checkbox"
                 name="justCheckbox"
+                checked={isAcceptTerm}
                 onChange={handlePdpa}
-                id=""
               />
               <label style={{ color: "black", fontSize: "24px" }}>
                 โปรดสมยอมใน term ของเรา
